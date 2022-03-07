@@ -1,0 +1,29 @@
+1) Write a Java program which parses the grammatical rules from a text file, then uses the
+parsed data to generate a random poem. Here is an example of what the output might look
+like:
+my sun among her white meadow
+moon upon my light
+moon
+your rain climbs
+her murky bright clear willow
+
+PoemGenerator project
+
+
+2) Create a class diagram which describes the design used in the implementation of
+question 1.
+
+project -> ClassDiagram.drawio
+
+
+3) Explain two cases where you learned something through experience (e.g. solving a
+production issue) and could not have learned about that problem through theoretical
+knowledge or reading through technical documentation.
+
+R://  First one: Solving technical request given by user story, in that cases i had to resolve a bug where Java Thread was not working, i learned through theroical knowledfe
+      Second one: Solving messages from RabbitMQ where i read a documentation and i can resolve in queue messages
+
+4) Given the choice between writing ideal code and meeting a critical deadline, which
+would you choose and why?
+
+R:// Meeting a critical deadline, cause it's important to know critical flows in my app and which one generate many bugfix.
