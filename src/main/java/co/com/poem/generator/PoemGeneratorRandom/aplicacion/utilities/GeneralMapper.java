@@ -5,7 +5,7 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-public interface GeneralMapper<D, M>{
+public interface GeneralMapper<D, M> {
 
     Optional<M> dtoToModel(D dto);
 

@@ -13,10 +13,9 @@ public class GrammarRulesService {
     public Optional<GrammarModel> parse() {
 
         GrammarModel grammar = new GrammarModel();
-        int position = 0;
         try {
             GrammarEnum[] grammarValues = GrammarEnum.values();
-            while (grammarValues.length != 0) {
+            for (int position = 0; position < grammarValues.length; position++) {
                 RuleModel rule = new RuleModel();
 
                 String[] rules = grammarValues[position].getValue().split(":");
@@ -33,9 +32,20 @@ public class GrammarRulesService {
 
                     grammar.getRules().put(ruleName, rule);
                 } else {
+
+                    int indexReferenceKeyword = 0;
+
                     List<String> ruleWordreferences = Arrays.asList(ruleDefinition.split(" "));
 
-                    List<String> words = Arrays.asList(ruleWordreferences.get(0).trim().split("\\|"));
+                    if (isMatch(ruleWordreferences.get(0)).get()) {
+                        List<String> words = Arrays.asList(ruleWordreferences.get(0).trim().split("\\|"));
+                        rule.setWords(words);
+                        indexReferenceKeyword = 1;
+                    }
+
+                    List<String> ruleReferenceKeyword = Arrays.asList(ruleWordreferences.get(indexReferenceKeyword).split("\\|"));
+                    rule.setKeywords(ruleReferenceKeyword);
+                    grammar.getRules().put(ruleName, rule);
                 }
             }
             return Optional.of(grammar);
@@ -43,5 +53,9 @@ public class GrammarRulesService {
             e.printStackTrace();
             return Optional.empty();
         }
+    }
+
+    private Optional<Boolean> isMatch(String regEx) {
+        return Optional.of(regEx.matches("[a-z].*"));
     }
 }

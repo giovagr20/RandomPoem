@@ -25,7 +25,7 @@ public class GrammarModel {
     }
 
     public Map<String, RuleModel> getRules() {
-        if (this.rules==null){
+        if (this.rules == null) {
             rules = new HashMap<>();
         }
 
